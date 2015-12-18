@@ -1,0 +1,30 @@
+<h1>Party #<%= @party.id %></h1>
+
+<h3>Table of <%= @party.guest_count %></h3>
+
+<%= form_for @party do |f| %>
+  <%= f.label :guest_count  %>
+  <%= f.text_field :guest_count %>
+  <%= f.submit %>
+<% end %>
+
+
+<%= link_to "Back to Parties", user_path(current_user) %>
+
+<h5>Add Orders Here</h5>
+<%= form_for @order, url: party_orders_path(@party.id) do |f|%>
+  <%= f.collection_select :food_id, Food.all, :id, :name, include_blank: true %>
+  <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+  <%= f.submit %>
+<% end %>
+
+
+<h5>List Orders Here</h5>
+<ul>
+
+    <% @party.orders.each do |order| %>
+  <li>
+    <%= order.food.name %>
+  </li>
+  <% end %>
+</ul>

@@ -1,0 +1,27 @@
+<h1>Hello <%= current_user.username %> </h1>
+
+<h4>What would you like to do?</h4>
+
+<h5>Create a Party</h5>
+<%= link_to "Create a Party", new_party_path %>
+
+<h5>Select an active Party</h5>
+<ul>
+<% current_user.parties.all.each do |party| %>
+  <li>
+    <%= link_to "Party# #{party.id}", edit_party_path(party) %><%= party.guest_count %>
+  </li>
+<% end %>
+</ul>
+
+
+
+<%= button_to "Log-Out", sessions_path, method: :delete %>
+
+
+
+<% if current_user.permission > 1 %>
+<h5>Food CRUD Management</h5>
+<%= link_to "View Menu", foods_path %>
+<%= link_to "Add Menu Item", new_food_path %>
+<% end %>
