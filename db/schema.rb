@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 20151217230902) do
 
   create_table "parties", force: :cascade do |t|
     t.integer  "guest_count"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
+
+  add_index "parties", ["user_id"], name: "index_parties_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -53,4 +55,5 @@ ActiveRecord::Schema.define(version: 20151217230902) do
 
   add_foreign_key "orders", "orders"
   add_foreign_key "orders", "parties"
+  add_foreign_key "parties", "users"
 end
