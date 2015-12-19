@@ -6,8 +6,7 @@
   <li>
     <%= form_for order, url: party_order_path(order.party_id, order) do |f|%>
     <%= order.food.name  %>, Table #<%=order.party_id %>,
-    <%= f.label :readyyet %>
-    <%= f.radio_button :readyyet, 1 %>
+    <input type="hidden" name="order[readyyet]" value="1">
     <%= f.submit "Ready" %>
     <% end %>
   </li>

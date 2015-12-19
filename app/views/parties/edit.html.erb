@@ -1,10 +1,16 @@
 <h1>Party #<%= @party.id %></h1>
 
+<% if @party.paidyet == 1 %>
+<h2>This party's bill has been PAID click <%= link_to "here", user_path(current_user) %> to go back to the home screen.</h2>
+<% end %>
+
 <h3>Table of <%= @party.guest_count %></h3>
 
 <%= form_for @party do |f| %>
   <%= f.label :guest_count  %>
   <%= f.text_field :guest_count %>
+  <%= f.label "Payment Processed"%>
+  <%= f.radio_button :paidyet, 1 %>
   <%= f.submit %>
 <% end %>
 <%= button_to "Delete Party", party_path(@party), method: :delete %>

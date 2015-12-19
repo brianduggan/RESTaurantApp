@@ -31,7 +31,7 @@ class PartiesController < ApplicationController
   private
 
   def party_params
-    params.require(:party).permit(:guest_count)
+    params.require(:party).permit(:guest_count, :paidyet)
   end
 
 end

@@ -19,8 +19,13 @@
 <%= link_to "Create a Party", new_party_path %>
 
 <h5>Select Your Party</h5>
+<% if @currentparties.length == 0 && @currentorders.length > 0 %>
+  <p>All your customers have paid, but you are waiting on the kitchen</p>
+<% elsif @currentparties.length == 0 %>
+  <p>You do not currently have any unpaid customers</p>
+<% end %>
 <ul>
-  <% current_user.parties.all.each do |party| %>
+  <% @currentparties.each do |party| %>
     <li>
     <%= link_to "Party ##{party.id}", edit_party_path(party) %>, Guest Count: <%= party.guest_count %>
     </li>
@@ -29,7 +34,7 @@
 <% end %>
 
 <% if current_user.permission > 1 %>
-<h4>All Parties in the Restaurant</h4>
+<h4>All Unpaid Parties in the Restaurant</h4>
 <ul>
   <% @parties.all.each do |party| %>
     <li>

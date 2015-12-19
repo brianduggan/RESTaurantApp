@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
   def show
-    @parties = Party.all
+    @parties = Party.where(:paidyet => 0)
     @notdone = Order.where(:readyyet => 0)
+    @currentorders = current_user.orders.where(readyyet: 0)
+    @currentparties = current_user.parties.where(paidyet: 0)
   end
 
   def new
