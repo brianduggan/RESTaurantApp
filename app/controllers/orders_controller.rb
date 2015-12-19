@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
     @orders = Order.where(:readyyet => 0)
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
   def create
     new_order = Order.create( order_params )
     redirect_to edit_party_path(new_order.party_id)

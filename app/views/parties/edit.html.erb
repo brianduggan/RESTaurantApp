@@ -35,6 +35,8 @@
     <% @party.orders.each do |order| %>
   <li>
     <%= order.food.name %>, Notes: <%= order.notes %>
+    <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
+    
     <%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
   </li>
   <% end %>
