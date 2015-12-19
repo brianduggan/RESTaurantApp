@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ @-ms-viewport{
+   width: device-width;
+ }
+
 body {
   background: url('http://www.wall321.com/thumbnails/detail/20130503/beers%20restaurant_www.wall321.com_64.jpg');
   background-size: cover;
