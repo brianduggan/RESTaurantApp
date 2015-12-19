@@ -32,4 +32,6 @@
 <h3>Subtotal: $<%= @party.checkout %></h3>
 <h3>Tax: $<%=@party.taxer %></h3>
 <h3>Total: $<%= @party.totaller%></h3>
-<p>Suggested Gratuities: 15% $<%= number_with_precision((@party.checkout * 0.15), precision: 2) %> 18% <%= number_with_precision((@party.checkout * 0.18), precision: 2) %> 20% $<%= number_with_precision((@party.checkout * 0.20), precision: 2) %></p>
+<p>Suggested Gratuities: 15% $ <%= number_with_precision(@party.tipper(15), precision: 2) %>
+  18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %>
+  20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %></p>

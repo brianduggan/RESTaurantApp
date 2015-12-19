@@ -23,5 +23,9 @@ class Party < ActiveRecord::Base
     total.round(2)
   end
 
+  def tipper(percent)
+    (self.checkout * (percent*0.01))
+  end
+
 
 end
