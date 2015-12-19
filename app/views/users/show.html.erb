@@ -1,5 +1,6 @@
-<%= button_to "Log-Out", sessions_path, method: :delete %>
-
+<div id="log-out">
+  <%= button_to "Log-Out", sessions_path, method: :delete %>
+</div>
 
 <h1>Hello <%= current_user.username.capitalize %> </h1>
 
@@ -31,15 +32,16 @@
 <% end %>
 
 
-<div class="orders-container">
-  <h2>Orders Being Prepared</h2>
+<div class="party-content">
+  <h2>Orders Being Prep'd</h2>
   <% if current_user.permission != 1 %>
   <%= link_to "Kitchen Menu", party_orders_path(current_user) %>
   <% end %>
   <ul>
   <%  @notdone.each do |order| %>
     <li>
-       Table #<%=order.party.table_num %>, <%= order.food.name  %> - Notes: <%= order.notes %>
+       Table #<%=order.party.table_num %>, <%= order.food.name  %><br>
+       Notes: <%= order.notes %>
     </li>
   <% end %>
   </ul>
@@ -47,19 +49,22 @@
 
 
 <% if current_user.permission > 1 %>
-  <div class="admin-container">
+  <div class="party-content">
     <h2>Administration</h2>
     <h3>All Unpaid Parties in the Restaurant</h3>
     <ul>
       <% @parties.all.each do |party| %>
-        <li>
-        <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>, Server: <%= party.user.username.capitalize %>
+        <%= link_to edit_party_path(party) do%>
+        <li class="party-content">
+        Party of <%= party.guest_count %> @ Table <%= party.table_num %>
+        <br> Receipt #<%= party.id %><br> Server: <%= party.user.username.capitalize %>
         </li>
+        <% end %>
       <% end %>
     </ul>
 
     <h3>Menu Manager</h3>
-    <%= link_to "View Menu", foods_path %>
+    <%= link_to "View Menu", foods_path %><br>
     <%= link_to "Add Menu Item", new_food_path %>
   </div>
 <% end %>

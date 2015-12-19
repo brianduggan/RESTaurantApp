@@ -1,9 +1,11 @@
 <h1>Create a Party</h1>
 
 <%= form_for @party do |f| %>
-  <%= f.label "Table Number" %>
-  <input min="1" max="12" type="number" value="0" name="party[table_num]" id="party_table_num">
-  <%= f.label :guest_count %>
-  <%= f.number_field :guest_count %>
+  <%= f.label "Table Number" %><br>
+  <input min="1" max="12" type="number" value="0" name="party[table_num]" id="party_table_num"><br>
+  <%= f.label :guest_count %><br>
+  <%= f.number_field :guest_count %><br>
   <%= f.submit %>
 <% end %>
+
+<%= link_to "Go back", user_path(current_user) %>

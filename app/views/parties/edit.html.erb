@@ -1,26 +1,13 @@
-<h1>Table #<%= @party.table_num %></h1>
-<h2>Party of <%= @party.guest_count %></h2>
+<h2>Table #<%= @party.table_num %> - Party of <%= @party.guest_count %></h2>
 <h3>Receipt #<%= @party.id %></h3>
+<%= link_to "Back to Parties", user_path(current_user) %>
 
 <% if @party.paidyet == 1 %>
 <h2>This party's bill has been PAID click <%= link_to "here", user_path(current_user) %> to go back to the home screen.</h2>
 <% end %>
 
-<%= form_for @party do |f| %>
-  <%= f.label "Table Number" %>
-  <%= f.number_field :table_num, min: 1, max: 12 %>
-  <%= f.label :guest_count  %>
-  <%= f.number_field :guest_count %>
-  <%= f.label "Payment Processed"%>
-  <%= f.radio_button :paidyet, 1 %>
-  <%= f.submit %>
-<% end %>
-<%= button_to "Delete Party", party_path(@party), method: :delete %>
-
-
-<%= link_to "Back to Parties", user_path(current_user) %>
-
-<h5>Add Orders Here</h5>
+<div class="party-content">
+<h2>Add Items</h2>
 <%= form_for @order, url: party_orders_path(@party.id) do |f|%>
   <%= f.collection_select :food_id, Food.all, :id, :name, include_blank: true %>
   <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
@@ -28,23 +15,47 @@
   <%= f.text_area :notes %>
   <%= f.submit %>
 <% end %>
+</div>
 
-
-<h5>List Orders Here</h5>
-<ul>
+<div class="party-content">
+  <h2>Order</h2>
+    <% if @party.orders.length == 0 %>
+      <p>There is nothing here yet.</p>
+    <% end %>
     <% @party.orders.each do |order| %>
-  <li>
-    <%= order.food.name %>, Notes: <%= order.notes %>
-    <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
-    
-    <%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
-  </li>
-  <% end %>
-</ul>
+      <div class="party-content">
+        <%= order.food.name %><br>
+        Notes: <%= order.notes %><br>
+        <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
 
-<h3>Subtotal: $<%= @party.checkout %></h3>
-<h3>Tax: $<%=@party.taxer %></h3>
-<h3>Total: $<%= @party.totaller%></h3>
-<p>Suggested Gratuities: 15% $ <%= number_with_precision(@party.tipper(15), precision: 2) %>
-  18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %>
-  20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %></p>
+        <%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
+      </div>
+  <% end %>
+</div>
+
+
+
+<div class="party-content">
+<h2>Edit the Party</h2>
+<%= form_for @party do |f| %>
+  <%= f.label "Table Number" %>
+  <%= f.number_field :table_num, min: 1, max: 12 %>
+  <%= f.label :guest_count  %>
+  <%= f.number_field :guest_count %>
+  <%= f.label "Process Payment?" %>
+  <%= f.radio_button :paidyet, 1 %>
+  <%= f.submit %>
+<% end %>
+<%= button_to "Delete Party", party_path(@party), method: :delete %>
+</div>
+
+
+<div class="party-content">
+  <h2>Summary</h2>
+  <h3>Subtotal: $<%= @party.checkout %></h3>
+  <h3>Tax: $<%=@party.taxer %></h3>
+  <h3>Total: $<%= @party.totaller%></h3>
+  <p>Suggested Gratuities: <br>15% $<%= number_with_precision(@party.tipper(15), precision: 2) %> --
+    18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %> --
+    20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %></p>
+</div>
