@@ -2,7 +2,7 @@
 
 <%= form_for @party do |f| %>
   <%= f.label "Table Number" %>
-  <%= f.number_field :table_num, min: 1, max: 12 %>
+  <input min="1" max="12" type="number" value="0" name="party[table_num]" id="party_table_num">
   <%= f.label :guest_count %>
   <%= f.number_field :guest_count %>
   <%= f.submit %>
