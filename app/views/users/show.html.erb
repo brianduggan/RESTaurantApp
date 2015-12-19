@@ -1,8 +1,41 @@
-<h1>Hello <%= current_user.username %> </h1>
+<%= button_to "Log-Out", sessions_path, method: :delete %>
 
 
+<h1>Hello <%= current_user.username.capitalize %> </h1>
+
+<% if current_user.permission > 0 %>
+  <div class="parties-container">
+    <h2>Party Management</h2>
+
+    <% if @currentparties.length == 0 && @currentorders.length > 0 %>
+      <p>All your customers have paid, but you are waiting on the kitchen</p>
+    <% elsif @currentparties.length == 0 %>
+      <p>You do not currently have any unpaid customers</p>
+    <% end %>
+
+    <div class="row">
+      <% @currentparties.each do |party| %>
+        <div class="col-md-4">
+          <%= link_to edit_party_path(party) do %>
+          <div class="party-content">
+            <h4>Table #<%=party.table_num %></h4>
+            <h5><%= party.guest_count%> guests</h5>
+            <h5>Receipt #<%= party.id %></h5>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+      <div><%= link_to "+ New Party", new_party_path %></div>
+  </div>
+<% end %>
+
+
+<div class="orders-container">
   <h2>Orders Being Prepared</h2>
+  <% if current_user.permission != 1 %>
   <%= link_to "Kitchen Menu", party_orders_path(current_user) %>
+  <% end %>
   <ul>
   <%  @notdone.each do |order| %>
     <li>
@@ -10,46 +43,23 @@
     </li>
   <% end %>
   </ul>
-
-<% if current_user.permission > 0 %>
-
-<h4>What would you like to do?</h4>
-
-<h5>Create a Party</h5>
-<%= link_to "Create a Party", new_party_path %>
-
-<h5>Select Your Party</h5>
-<% if @currentparties.length == 0 && @currentorders.length > 0 %>
-  <p>All your customers have paid, but you are waiting on the kitchen</p>
-<% elsif @currentparties.length == 0 %>
-  <p>You do not currently have any unpaid customers</p>
-<% end %>
-<ul>
-  <% @currentparties.each do |party| %>
-    <li>
-    <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>
-    </li>
-  <% end %>
-</ul>
-<% end %>
-
-<% if current_user.permission > 1 %>
-<h4>All Unpaid Parties in the Restaurant</h4>
-<ul>
-  <% @parties.all.each do |party| %>
-    <li>
-    <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>
-    </li>
-  <% end %>
-</ul>
-<% end %>
-
-<%= button_to "Log-Out", sessions_path, method: :delete %>
-
+</div>
 
 
 <% if current_user.permission > 1 %>
-<h5>Food CRUD Management</h5>
-<%= link_to "View Menu", foods_path %>
-<%= link_to "Add Menu Item", new_food_path %>
+  <div class="admin-container">
+    <h2>Administration</h2>
+    <h3>All Unpaid Parties in the Restaurant</h3>
+    <ul>
+      <% @parties.all.each do |party| %>
+        <li>
+        <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>, Server: <%= party.user.username.capitalize %>
+        </li>
+      <% end %>
+    </ul>
+
+    <h3>Menu Manager</h3>
+    <%= link_to "View Menu", foods_path %>
+    <%= link_to "Add Menu Item", new_food_path %>
+  </div>
 <% end %>

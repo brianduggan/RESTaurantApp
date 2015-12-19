@@ -1,13 +1,13 @@
 <h1>Orders</h1>
 <%= link_to "Main Page", user_path(current_user) %>
 
-<ul>
+<ul id="order-color">
 <%  @orders.each do |order| %>
-  <li>
+  <li data-time-elapsed="<%= order.time_difference %>">
     <%= form_for order, url: party_order_path(order.party_id, order) do |f|%>
-    <%= order.food.name  %>, Table #<%=order.party_id %> - Notes: <%= order.notes %>
+    <p><%= order.food.name  %>, Table #<%=order.party_id %> - Notes: <%= order.notes %>
     <input type="hidden" name="order[readyyet]" value="1">
-    <%= f.submit "Ready" %>
+    <%= f.submit "Ready" %></p>
     <% end %>
   </li>
 <% end %>
