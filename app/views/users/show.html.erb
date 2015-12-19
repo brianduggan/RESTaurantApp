@@ -6,7 +6,7 @@
   <ul>
   <%  @notdone.each do |order| %>
     <li>
-       Table #<%=order.party_id %>, <%= order.food.name  %>
+       Table #<%=order.party_id %>, <%= order.food.name  %> - Notes: <%= order.notes %>
     </li>
   <% end %>
   </ul>

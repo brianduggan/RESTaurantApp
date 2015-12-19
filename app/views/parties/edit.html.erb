@@ -22,6 +22,8 @@
 <%= form_for @order, url: party_orders_path(@party.id) do |f|%>
   <%= f.collection_select :food_id, Food.all, :id, :name, include_blank: true %>
   <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+  <%= f.label "Notes" %>
+  <%= f.text_area :notes %>
   <%= f.submit %>
 <% end %>
 
@@ -30,7 +32,8 @@
 <ul>
     <% @party.orders.each do |order| %>
   <li>
-    <%= order.food.name %><%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
+    <%= order.food.name %>, Notes: <%= order.notes %>
+    <%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
   </li>
   <% end %>
 </ul>
