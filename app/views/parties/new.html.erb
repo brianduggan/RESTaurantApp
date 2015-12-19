@@ -1,6 +1,8 @@
 <h1>Create a Party</h1>
 
 <%= form_for @party do |f| %>
+  <%= f.label "Table Number" %>
+  <%= f.number_field :table_num, min: 1, max: 12 %>
   <%= f.label :guest_count %>
   <%= f.number_field :guest_count %>
   <%= f.submit %>

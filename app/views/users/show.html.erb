@@ -6,7 +6,7 @@
   <ul>
   <%  @notdone.each do |order| %>
     <li>
-       Table #<%=order.party_id %>, <%= order.food.name  %> - Notes: <%= order.notes %>
+       Table #<%=order.party.table_num %>, <%= order.food.name  %> - Notes: <%= order.notes %>
     </li>
   <% end %>
   </ul>
@@ -27,7 +27,7 @@
 <ul>
   <% @currentparties.each do |party| %>
     <li>
-    <%= link_to "Party ##{party.id}", edit_party_path(party) %>, Guest Count: <%= party.guest_count %>
+    <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>
     </li>
   <% end %>
 </ul>
@@ -38,7 +38,7 @@
 <ul>
   <% @parties.all.each do |party| %>
     <li>
-    <%= link_to "Party ##{party.id}", edit_party_path(party) %><%= party.guest_count %>
+    <%= link_to "Party of #{party.guest_count} @ Table ##{party.table_num}", edit_party_path(party) %>, Receipt #<%= party.id %>
     </li>
   <% end %>
 </ul>
