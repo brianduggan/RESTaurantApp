@@ -7,6 +7,7 @@
   <%= f.text_field :guest_count %>
   <%= f.submit %>
 <% end %>
+<%= button_to "Delete Party", party_path(@party), method: :delete %>
 
 
 <%= link_to "Back to Parties", user_path(current_user) %>
@@ -23,7 +24,7 @@
 <ul>
     <% @party.orders.each do |order| %>
   <li>
-    <%= order.food.name %>
+    <%= order.food.name %><%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
   </li>
   <% end %>
 </ul>

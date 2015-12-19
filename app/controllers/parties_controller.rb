@@ -22,6 +22,12 @@ class PartiesController < ApplicationController
     redirect_to edit_party_path(party)
   end
 
+  def destroy
+    party = Party.find(params[:id])
+    party.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def party_params

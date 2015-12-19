@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @parties = Party.all
+    @notdone = Order.where(:readyyet => 0)
   end
 
   def new

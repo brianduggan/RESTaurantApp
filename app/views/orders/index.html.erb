@@ -1,0 +1,15 @@
+<h1>Orders</h1>
+<%= link_to "Main Page", user_path(current_user) %>
+
+<ul>
+<%  @orders.each do |order| %>
+  <li>
+    <%= form_for order, url: party_order_path(order.party_id, order) do |f|%>
+    <%= order.food.name  %>, Table #<%=order.party_id %>,
+    <%= f.label :readyyet %>
+    <%= f.radio_button :readyyet, 1 %>
+    <%= f.submit "Ready" %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
