@@ -7,7 +7,7 @@
 <%  @orders.each do |order| %>
   <li data-time-elapsed="<%= order.time_difference %>">
     <%= form_for order, url: party_order_path(order.party_id, order) do |f|%>
-      <p id="color-this"><%= order.food.name  %>, Table #<%=order.party_id %><br>
+      <p id="color-this"><%= order.food.name  %>, Table #<%=order.party.table_num %><br>
       Notes: <%= order.notes %><br>
       Time Elapsed: <%=order.time_difference.round %> minutes</p>
 
