@@ -45,6 +45,10 @@ ul {
   padding-left: 0px;
 }
 
+a {
+  color: peru;
+}
+
 hr {
 border-top: 1px dotted #8c8b8b;
 }
@@ -64,7 +68,7 @@ input {
 
 input[type="submit"]{
   border-radius: 2%;
-  background-color: rgba(107,142,35,0.9);
+  background-color: rgba(233,176,48,0.9);
   border: none;
 }
 
@@ -127,6 +131,35 @@ nav {
   margin-top: 2%;
   color: firebrick;
 }
+
+/* RECEIPT MODAL */
+
+#modal {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: 'Cutive Mono', monospace;
+}
+
+#close-modal {
+  float: right;
+}
+
+#modal-content {
+  background: white;
+  width: 380px;
+  margin: 10px auto;
+  padding: 10px 25px;
+}
+
+
+
+
+
 
 
 /* put this here to preserve whitespace*/

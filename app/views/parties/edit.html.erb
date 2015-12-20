@@ -63,4 +63,33 @@
     15% $<%= number_with_precision(@party.tipper(15), precision: 2) %> --
     18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %> --
     20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %></p>
+  <p id="open-modal">Generate Receipt</p>
+</div>
+
+<div id="modal">
+  <div id="modal-content">
+    <div id="close-modal">
+      X
+    </div>
+    <div>
+      <h3>Receipt #<%=@party.id %></h3>
+      <ul>
+      <% @party.orders.each do |order| %>
+        <li>
+        <%= order.food.name %><p class="text-right">...............<%= order.food.price %></p>
+        </li>
+      <% end %>
+      </ul>
+      <div class="text-right">
+        <p>Subtotal: $<%= number_with_precision(@party.checkout, precision: 2) %></p>
+        <p>Tax: $<%= number_with_precision(@party.taxer, precision: 2) %></p>
+        <h4>Total: $<%= number_with_precision(@party.totaller, precision: 2)%></h4>
+      </div>
+      <p>Suggested Gratuities: <br>
+        15% $<%= number_with_precision(@party.tipper(15), precision: 2) %> --
+        18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %> --
+        20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %></p>
+      <h6>THANK YOU AND HAPPY HOLIDAYS!</h6>
+    </div>
+  </div>
 </div>

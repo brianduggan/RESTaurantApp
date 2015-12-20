@@ -41,6 +41,13 @@ $(document).ready(function(){
     }
   }); //end each
 
+  $('#open-modal').on('click', function(){
+    $('#modal').toggle();
+  });
+  $('#close-modal').on('click', function(){
+    $('#modal').toggle();
+  });
+
   // var reload = function(){
   //   console.log("I reloaded!");
   //   location.reload();
