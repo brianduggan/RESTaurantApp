@@ -6,9 +6,10 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :permission %>
-  <%= f.number_field :permission %>
+  <input min="0" max="2" type="number" value="1" name="user[permission]" id="party_table_num">
   <%= f.submit %>
 <% end %>
+
 <div class="error">
 <% if flash[:error] %>
   <% flash[:error].each do |error| %>

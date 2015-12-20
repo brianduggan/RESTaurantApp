@@ -27,12 +27,12 @@ $(document).ready(function(){
 
     if (timeDiff < 5){
       $entity.css("color", "green");
-    } else if (timeDiff > 15){
+    } else if (timeDiff >= 15){
       $entity.css("color", "firebrick");
-    } else if (timeDiff > 10){
-      $entity.css("color", "salmon");
-    } else if (timeDiff > 5){
-      $entity.css("color", "goldenrod");
+    } else if (timeDiff >= 10){
+      $entity.css("color", "darkorange");
+    } else if (timeDiff >= 5){
+      $entity.css("color", "gold");
     }
   }); //end each
 

@@ -3,7 +3,7 @@
 <ul>
 <% @foods.each do |food|%>
   <li>
-    <strong><<%= food.name %>/strong><br>
+    <strong><%= food.name %></strong><br>
     <%= food.description %>....$<%= food.price %><br>
     <%= link_to "Edit Menu Item", edit_food_path(food.id) %>
 <!-- If this food item has never been ordered, it may be deleted, in the future I could edit this feature so that foods are active/inactive and I could add a make inactive button as well-->
