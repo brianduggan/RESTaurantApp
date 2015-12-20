@@ -149,6 +149,11 @@ nav {
   float: right;
 }
 
+#open-modal {
+  color: crimson;
+  font-weight: bolder;
+}
+
 #modal-content {
   background: white;
   width: 300px;
