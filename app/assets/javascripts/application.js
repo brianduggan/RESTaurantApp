@@ -33,10 +33,10 @@ $(document).ready(function(){
       $entity.css("color", "firebrick");
       $button.css("color", "black");
     } else if (timeDiff >= 10){
-      $entity.css("color", "darkorange");
+      $entity.css("color", "tomato");
       $button.css("color", "black");
     } else if (timeDiff >= 5){
-      $entity.css("color", "gold");
+      $entity.css("color", "yellow");
       $button.css("color", "black");
     }
   }); //end each
