@@ -76,12 +76,17 @@ input[type="radio"]{
   margin-top: -10px;
 }
 
+textarea {
+  width: 71%;
+  max-width: 100%;
+}
+
 /* LOG OUT BUTTON */
 
 #log-out input[type="submit"] {
-  width: 25%;
+  width: 100px;
   margin: 0 auto;
-  position: absolute;
+  position: static;
   top: 50px;
   right: 10px;
   text-align: center;
@@ -91,7 +96,7 @@ input[type="radio"]{
 }
 
 #log-out {
-  text-align: right;
+  float: right;
 }
 
 /* NAVIGATION LINKS */
@@ -162,7 +167,15 @@ nav {
 }
 
 
+@media screen and (min-width: 480px) {
+  input {
+    margin-top: 10px;
+    width: 30%;
+    height: 40px;
+  }
 
+
+}
 
 
 
