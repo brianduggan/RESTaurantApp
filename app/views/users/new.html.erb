@@ -6,7 +6,11 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :permission %>
-  <input min="0" max="2" type="number" value="1" name="user[permission]" id="party_table_num">
+  <select name="user[permission]" id="party_table_num">
+    <option value="0">Chef</option>
+    <option value="1">Server</option>
+    <option value="2">Manager</option>
+  </select>
   <%= f.submit %>
 <% end %>
 

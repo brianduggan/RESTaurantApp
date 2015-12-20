@@ -12,7 +12,7 @@
       Time Elapsed: <%=order.time_difference.round %> minutes</p>
 
       <input type="hidden" name="order[readyyet]" value="1">
-      <%= f.submit "Ready" %>
+      <%= f.submit "Ready", class: "food-button" %>
     <% end %>
   </li>
   <hr>

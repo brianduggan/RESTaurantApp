@@ -22,17 +22,22 @@ $(document).ready(function(){
   var $orders = $('#order-color');
   $orders.children('li').each(function(){
     var $entity = $(this);
+    var $button = $('.food-button');
     var timeDiff = $entity.data("time-elapsed"); //in minutes
     console.log(timeDiff);
 
     if (timeDiff < 5){
       $entity.css("color", "green");
+      $button.css("color", "black");
     } else if (timeDiff >= 15){
       $entity.css("color", "firebrick");
+      $button.css("color", "black");
     } else if (timeDiff >= 10){
       $entity.css("color", "darkorange");
+      $button.css("color", "black");
     } else if (timeDiff >= 5){
       $entity.css("color", "gold");
+      $button.css("color", "black");
     }
   }); //end each
 
