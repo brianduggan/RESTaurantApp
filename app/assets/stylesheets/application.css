@@ -70,8 +70,9 @@ input[type="radio"]{
 }
 
 /* LOG OUT BUTTON */
+
 #log-out input[type="submit"] {
-  width: 90px;
+  width: 20%;
   margin: 0 auto;
   position: absolute;
   top: 50px;
@@ -86,7 +87,20 @@ input[type="radio"]{
   text-align: right;
 }
 
-/* PARTYS COLUMNS*/
+/* NAVIGATION LINKS */
+
+nav {
+  font-size: 1.4em;
+  margin-top: 3%;
+}
+
+.smaller-nav {
+  font-size: 1.2em;
+  margin-top: 2%;
+}
+
+
+/* PARTYS COLUMNS */
 
 .col-md-4 {
   padding: 2%;
@@ -103,23 +117,6 @@ input[type="radio"]{
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.1);
 }
 
-
-/* DEVELOPMENT CONTAINERS */
-
-.orders-container {
-  border: 1px solid grey;
-  padding: 10px;
-}
-
-.parties-container {
-  /*border: 1px solid grey;*/
-  padding: 10px;
-}
-
-.admin-container {
-  border: 1px solid grey;
-  padding: 10px;
-}
 
 
 

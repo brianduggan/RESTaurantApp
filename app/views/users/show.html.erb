@@ -27,21 +27,25 @@
         </div>
       <% end %>
     </div>
-      <div><%= link_to "+ New Party", new_party_path %></div>
+      <nav class="nav-div"><%= link_to "+ New Party", new_party_path, class: "nav-link" %></nav>
   </div>
 <% end %>
 
 
 <div class="party-content">
   <h2>Orders Being Prep'd</h2>
-  <% if current_user.permission != 1 %>
-  <%= link_to "Kitchen Menu", party_orders_path(current_user) %>
-  <% end %>
+    <nav>
+      <% if current_user.permission != 1 %>
+      <%= link_to "Kitchen Menu", party_orders_path(current_user) %>
+      <% end %>
+    </nav>
   <ul>
   <%  @notdone.each do |order| %>
     <li>
-       Table #<%=order.party.table_num %>, <%= order.food.name  %><br>
-       Notes: <%= order.notes %>
+       <strong> Table #<%=order.party.table_num %>, <%= order.food.name  %></strong><br>
+       Server: <%= order.party.user.username.capitalize  %><br>
+       Notes: <%= order.notes %><br>
+       Time Elapsed: <%= order.time_difference.round %> minutes
     </li>
   <% end %>
   </ul>

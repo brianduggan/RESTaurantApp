@@ -30,7 +30,7 @@ $(document).ready(function(){
     } else if (timeDiff > 15){
       $entity.css("color", "firebrick");
     } else if (timeDiff > 10){
-        $entity.css("color", "salmon");
+      $entity.css("color", "salmon");
     } else if (timeDiff > 5){
       $entity.css("color", "goldenrod");
     }

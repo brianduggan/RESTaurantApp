@@ -1,6 +1,9 @@
 <h2>Table #<%= @party.table_num %> - Party of <%= @party.guest_count %></h2>
 <h3>Receipt #<%= @party.id %></h3>
-<%= link_to "Back to Parties", user_path(current_user) %>
+<nav>
+  <%= link_to "Back to Parties", user_path(current_user) %>
+</nav>
+
 
 <% if @party.paidyet == 1 %>
 <h2>This party's bill has been PAID click <%= link_to "here", user_path(current_user) %> to go back to the home screen.</h2>
@@ -9,9 +12,9 @@
 <div class="party-content">
 <h2>Add Items</h2>
 <%= form_for @order, url: party_orders_path(@party.id) do |f|%>
-  <%= f.collection_select :food_id, Food.all, :id, :name, include_blank: true %>
+  <%= f.collection_select :food_id, Food.all, :id, :name, include_blank: true %><br>
   <input type="hidden" name="order[party_id]" value="<%= @party.id %>">
-  <%= f.label "Notes" %>
+  <%= f.label "Notes" %><br>
   <%= f.text_area :notes %>
   <%= f.submit %>
 <% end %>
@@ -26,8 +29,9 @@
       <div class="party-content">
         <%= order.food.name %><br>
         Notes: <%= order.notes %><br>
-        <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
-
+        <nav class="smaller-nav">
+          <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
+        </nav>
         <%= button_to "Delete", party_order_path(order.party_id, order), method: :delete %>
       </div>
   <% end %>
