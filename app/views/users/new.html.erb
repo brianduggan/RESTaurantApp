@@ -9,3 +9,10 @@
   <%= f.number_field :permission %>
   <%= f.submit %>
 <% end %>
+<div class="error">
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <p class="error"> <%= error %> </p>
+  <% end %>
+<% end %>
+</div>

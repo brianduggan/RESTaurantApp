@@ -15,10 +15,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(user_params)
-    redirect_to root_path
+    user = User.create(user_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      flash[:error] = user.errors.full_messages
+      redirect_to new_user_path
+    end
   end
-
+  # user = User.create(user_params)
+  # if user.save
+  #   session[:user_id] = user.id
+  #   redirect_to tasks_path
+  # else
+  #   flash[:error] = user.errors.full_messages
+  #   redirect_to new_user_path
+  # end
 
   private
 
