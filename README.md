@@ -11,35 +11,35 @@ As a manager of a restaurant, I have 3 types of users, Chefs, Servers, and Admin
 
 Chefs primarily live in the kitchen and can see the orders that are coming to them.
 
-![placeholder pic for kitchen view food](/app/assets/images/chefview.png)
+![kitchen view food](/app/assets/images/chefview.png)
 
 Servers can see this view as well, but they can also create tables of guests (called parties), and assign orders to them for preparation in the kitchen. Servers can only view and see the parties that are assigned to them.
-![placeholder pic for table view](/app/assets/images/tables.png)
+![table view](/app/assets/images/tables.png)
 
 While focusing on a particular party, a server may add foods, delete foods, type notes...
-![placeholder pic for adding orders](/app/assets/images/orders.png)
+![adding orders](/app/assets/images/orders.png)
 ...and see the total.
-![placeholder pic for adding orders](/app/assets/images/total.png)
+![totals](/app/assets/images/total.png)
 
 
 A user may then select generate the receipt which they could then deliver to the customer's table.
-![placeholder pic for adding orders](/app/assets/images/receipt.png)
+![adding orders](/app/assets/images/receipt.png)
 
 An admin can see all of the functions available to chefs and servers. Additionally they may see all parties in the restaurant and have access to a menu administration mode.
-![placeholder pic for admin and all tables view](/app/assets/images/admin.png)
+![admin and all tables view](/app/assets/images/admin.png)
 
 
 ---
 
 ### ERD
-The following Entity Realtionship Diagram was used in my planning stage of the app.
-![placeholder pic](/app/assets/images/erd.png)
+The following Entity Relationship Diagram was used in my planning stage of the app.
+![erd](/app/assets/images/erd.png)
 
 ---
 
 ### Wireframes
 I created the below wireframes while planning the design of my page.
-![placeholder pic](/app/assets/images/wireframe.png)
+![wireframes](/app/assets/images/wireframe.png)
 
 ---
 ### Technologies Used
