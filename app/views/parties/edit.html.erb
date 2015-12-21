@@ -43,11 +43,11 @@
 <h2>Edit the Party</h2>
 <%= form_for @party do |f| %>
   <%= f.label "Table Number" %>
-  <%= f.number_field :table_num, min: 1, max: 12 %>
+  <%= f.number_field :table_num, min: 1, max: 12 %><br>
   <%= f.label :guest_count  %>
-  <%= f.number_field :guest_count %>
-  <%= f.label "Process Payment?" %>
-  <%= f.radio_button :paidyet, 1 %>
+  <%= f.number_field :guest_count %><br>
+  <%= f.label "Process Payment?" %><br>
+  <%= f.radio_button :paidyet, 1 %><br>
   <%= f.submit %>
 <% end %>
 <%= button_to "Delete Party", party_path(@party), method: :delete %>

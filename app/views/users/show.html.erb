@@ -6,7 +6,7 @@
 
 <% if current_user.permission > 0 %>
   <div class="parties-container">
-    <h2>Party Management</h2>
+    <h2>Your Tables</h2>
 
     <% if @currentparties.length == 0 && @currentorders.length > 0 %>
       <p>All your customers have paid, but you are waiting on the kitchen</p>
@@ -23,12 +23,14 @@
             <h5><%= party.guest_count%> guests</h5>
             <h5>Receipt #<%= party.id %></h5>
           </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-      <nav class="nav-div"><%= link_to "+ New Party", new_party_path, class: "nav-link" %></nav>
-  </div>
+          <% end %> <!-- END LINK -->
+        </div> <!-- END COLUMN-->
+      <% end %> <!-- END EACH -->
+    </div> <!-- END ROW -->
+      <nav class="nav-div">
+        <%= link_to "+ New Party", new_party_path, class: "nav-link" %>
+      </nav>
+  </div> <!-- END PARTIES-CONTAINER -->
 <% end %>
 
 
@@ -57,16 +59,18 @@
   <div class="party-content">
     <h2>Administration</h2>
     <h3>All Unpaid Parties in the Restaurant</h3>
-    <ul>
+    <div class="row">
       <% @parties.all.each do |party| %>
+      <div class="col-md-4">
         <%= link_to edit_party_path(party) do%>
-        <li class="party-content">
+        <div class="party-content">
         Party of <%= party.guest_count %> @ Table <%= party.table_num %>
         <br> Receipt #<%= party.id %><br> Server: <%= party.user.username.capitalize %>
-        </li>
+        </div>
         <% end %>
+      </div>
       <% end %>
-    </ul>
+    </div>
 
     <h3>Menu Manager</h3>
     <nav>
