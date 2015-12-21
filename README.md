@@ -8,7 +8,7 @@ Live version of the site can be viewed here: https://whispering-brook-4229.herok
 ### User Stories
 As a manager of a restaurant, I have 3 types of users, Chefs, Servers, and Admins. Each type of employee has separate abilities available to them. Chefs primarily live in the kitchen and can see the orders that are coming to them.
 
-![placeholder pic for kitchen view food](/app/assets/images/)
+![placeholder pic for kitchen view food](/app/assets/images/chefview.png)
 
 Servers can see this view as well, but they can also create tables of guests (called parties), and assign orders to them for preparation in the kitchen. Servers can only view and see the parties that are assigned to them.
 ![placeholder pic for table view](/app/assets/images/)

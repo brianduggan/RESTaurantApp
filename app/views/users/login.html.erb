@@ -7,3 +7,11 @@
   <%= password_field_tag :password %><br>
   <%= submit_tag "Log In" %>
 <% end %>
+
+<div class="error">
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <p class="error"> <%= error %> </p>
+  <% end %>
+<% end %>
+</div>

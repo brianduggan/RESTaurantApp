@@ -28,6 +28,7 @@
     <% @party.orders.each do |order| %>
       <div class="party-content">
         <%= order.food.name %><br>
+        Status: <%= order.is_ready %><br>
         Notes: <%= order.notes %><br>
         <nav class="smaller-nav">
           <%= link_to "Edit Notes", edit_party_order_path(order.party_id, order) %>
@@ -46,8 +47,10 @@
   <%= f.number_field :table_num, min: 1, max: 12 %><br>
   <%= f.label :guest_count  %>
   <%= f.number_field :guest_count %><br>
-  <%= f.label "Process Payment?" %><br>
+  <%= f.label "Paid" %><br>
   <%= f.radio_button :paidyet, 1 %><br>
+  <%= f.label "Unpaid" %><br>
+  <%= f.radio_button :paidyet, 0 %><br>
   <%= f.submit %>
 <% end %>
 <%= button_to "Delete Party", party_path(@party), method: :delete %>
@@ -84,8 +87,8 @@
       <br>
       <p>Suggested Gratuities: <br>
         15% $<%= number_with_precision(@party.tipper(15), precision: 2) %><br>
-        18% $<%= number_with_precision(@party.tipper(18), precision: 2)  %><br>
-        20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %><br></p>
+        20% $<%= number_with_precision(@party.tipper(20), precision: 2)  %><br>
+        25% $<%= number_with_precision(@party.tipper(25), precision: 2)  %><br></p>
       <h6>THANK YOU AND HAPPY HOLIDAYS!</h6>
     </div>
   </div>

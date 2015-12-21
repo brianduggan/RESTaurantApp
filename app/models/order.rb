@@ -9,6 +9,13 @@ class Order < ActiveRecord::Base
     time_diff
   end
 
+  def is_ready
+    if self.readyyet == 0
+      "Being Prep'd"
+    elsif self.readyyet = 1
+      "Served"
+    end
+  end
 
 
 end

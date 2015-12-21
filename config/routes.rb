@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :foods
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'users#login'
 
   get '/login' => 'users#login'
   post '/sessions' => 'sessions#create'
