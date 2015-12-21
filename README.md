@@ -33,13 +33,13 @@ An admin can see all of the functions available to chefs and servers. Additional
 
 ### ERD
 The following Entity Realtionship Diagram was used in my planning stage of the app.
-![placeholder pic](/app/assets/images/)
+![placeholder pic](/app/assets/images/erd.png)
 
 ---
 
 ### Wireframes
 I created the below wireframes while planning the design of my page.
-![placeholder pic](/app/assets/images/)
+![placeholder pic](/app/assets/images/wireframe.png)
 
 ---
 ### Technologies Used
