@@ -20,7 +20,7 @@ console.log("Hey there");
 $(document).ready(function(){
   // calculate time difference in ruby, then color based on the data number
   var $orders = $('#order-color');
-  $orders.children('li').each(function(){
+$orders.children('li').each(function(){
     var $entity = $(this);
     var $button = $('.food-button');
     var timeDiff = $entity.data("time-elapsed"); //in minutes
@@ -48,12 +48,10 @@ $(document).ready(function(){
     $('#modal').toggle();
   });
 
-  // var reload = function(){
-  //   console.log("I reloaded!");
-  //   location.reload();
-  // }
-  //
-  // $orders.on('hover', function(){
-  //   setInterval(reload, 30000);
-  // });
+  var reload = function(){
+    console.log("I reloaded!");
+    location.reload();
+  }
+
+    setInterval(reload, 30000);
 })
