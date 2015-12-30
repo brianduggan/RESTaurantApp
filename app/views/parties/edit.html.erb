@@ -61,13 +61,17 @@
   <h2><span class="eur currency">$</span><span class="usd currency">€</span></h2>
   <h2>Summary</h2>
   <h3>Subtotal: <span class="usd">$<%= number_with_precision(@party.checkout, precision: 2) %></span>
-    <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.checkout), precision: 2) %></span></h3>
+    <span class="eur">€<%= number_with_precision(@party.live_euro(@party.checkout, @euro_rate), precision: 2) %></span></h3>
   <h3>Tax: <span class="usd">$<%= number_with_precision(@party.taxer, precision: 2) %></span>
-    <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.taxer), precision: 2) %></span></h3>
+    <span class="eur">€<%= number_with_precision(@party.live_euro(@party.taxer, @euro_rate), precision: 2) %></span></h3>
   <h3>Total: <span class="usd">$<%= number_with_precision(@party.totaller, precision: 2)%></span>
-    <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.totaller), precision: 2) %></span>
+    <span class="eur">€<%= number_with_precision(@party.live_euro(@party.totaller, @euro_rate), precision: 2) %></span>
   </h3>
   <p id="open-modal">Generate Receipt</p>
+</div>
+
+<div class="party-content">
+  <h4>The Current Euro Exchange Rate: <%= @euro_rate %></h4>
 </div>
 
 <div id="modal">
@@ -80,29 +84,29 @@
       <ul>
       <% @party.orders.each do |order| %>
         <li>
-        <%= order.food.name %><p class="text-right">...............<span class='usd'>$<%= order.food.price %></span><span class="eur">€<%= number_with_precision(order.party.simple_euro(order.food.price), precision: 2) %></span></p>
+        <%= order.food.name %><p class="text-right">...............<span class='usd'>$<%= order.food.price %></span><span class="eur">€<%= number_with_precision(order.party.live_euro(order.food.price, @euro_rate), precision: 2) %></span></p>
         </li>
       <% end %>
       </ul>
       <div class="text-right">
         <p>Subtotal: <span class="usd">$<%= number_with_precision(@party.checkout, precision: 2) %></span>
-          <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.checkout), precision: 2) %></span>
+          <span class="eur">€<%= number_with_precision(@party.live_euro(@party.checkout, @euro_rate), precision: 2) %></span>
         </p>
         <p>Tax: <span class="usd">$<%= number_with_precision(@party.taxer, precision: 2) %></span>
-          <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.taxer), precision: 2) %></span>
+          <span class="eur">€<%= number_with_precision(@party.live_euro(@party.taxer, @euro_rate), precision: 2) %></span>
         </p>
         <h4>Total: <span class="usd">$<%= number_with_precision(@party.totaller, precision: 2)%></span>
-          <span class="eur">€<%= number_with_precision(@party.simple_euro(@party.totaller), precision: 2) %></span>
+          <span class="eur">€<%= number_with_precision(@party.live_euro(@party.totaller, @euro_rate), precision: 2) %></span>
         </h4>
       </div>
       <br>
       <p>Suggested Gratuities: <br>
         15% <span class='usd'>$<%= number_with_precision(@party.tipper(15), precision: 2) %></span>
-        <span class='eur'>€<%= number_with_precision(@party.simple_euro(@party.tipper(15)), precision: 2) %></span><br>
+        <span class='eur'>€<%= number_with_precision(@party.live_euro(@party.tipper(15), @euro_rate), precision: 2) %></span><br>
         20% <span class='usd'>$<%= number_with_precision(@party.tipper(20), precision: 2)  %></span>
-        <span class='eur'>€<%= number_with_precision(@party.simple_euro(@party.tipper(20)), precision: 2) %></span><br>
+        <span class='eur'>€<%= number_with_precision(@party.live_euro(@party.tipper(20), @euro_rate), precision: 2) %></span><br>
         25% <span class='usd'>$<%= number_with_precision(@party.tipper(25), precision: 2)  %></span>
-        <span class='eur'>€<%= number_with_precision(@party.simple_euro(@party.tipper(25)), precision: 2) %></span><br></p>
+        <span class='eur'>€<%= number_with_precision(@party.live_euro(@party.tipper(25), @euro_rate), precision: 2) %></span><br></p>
       <h6>THANK YOU AND HAPPY HOLIDAYS!</h6>
     </div>
   </div>

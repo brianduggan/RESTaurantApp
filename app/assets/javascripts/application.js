@@ -68,9 +68,8 @@ $orders.children('li').each(function(){
   })
 
 
-
-
-
+  $('#current-rate').hide();
+  
 
 
 

@@ -14,16 +14,10 @@ class Party < ActiveRecord::Base
     self.balance
   end
 
-  def simple_euro(value)
-    rate = 1.09
-    value * rate
-  end
 
-  # def checkout_euros
-  #   dollars = self.checkout
-  #   money = Money.new(dollars, "USD")
-  #   money.exchange_to(:EUR)
-  # end
+  def live_euro(value, rate)
+    value * (1/rate)
+  end
 
   def taxer
     tax = self.checkout * 0.08875

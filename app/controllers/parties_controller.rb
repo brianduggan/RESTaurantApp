@@ -11,6 +11,9 @@ class PartiesController < ApplicationController
   end
 
   def edit
+    response = HTTParty.get("https://openexchangerates.org/api/latest.json?app_id=7f9ca1044abf4e0182c9368ff1d4a23a")
+    result = JSON.parse(response.body)
+    @euro_rate = result["rates"]["EUR"]
     @party = Party.find(params[:id])
     @order = Order.new
     @orders = Order.all
