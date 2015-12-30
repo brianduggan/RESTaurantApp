@@ -166,6 +166,9 @@ nav {
   padding: 10px 25px;
 }
 
+.currency {
+  float: right;
+}
 
 @media screen and (min-width: 480px) {
   input {

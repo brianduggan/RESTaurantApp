@@ -48,10 +48,34 @@ $orders.children('li').each(function(){
     $('#modal').toggle();
   });
 
-  var reload = function(){
-    console.log("I reloaded!");
-    location.reload();
-  }
+  // var reload = function(){
+  //   console.log("I reloaded!");
+  //   location.reload();
+  // }
+  //
+  //   setInterval(reload, 30000);
 
-    setInterval(reload, 30000);
+  $('.eur').hide();
+
+  $('.usd').on('click', function(){
+    $('.usd').toggle();
+    $('.eur').toggle();
+  })
+
+  $('.eur').on('click', function(){
+    $('.usd').toggle();
+    $('.eur').toggle();
+  })
+
+
+
+
+
+
+
+
+
+
+
+
 })
