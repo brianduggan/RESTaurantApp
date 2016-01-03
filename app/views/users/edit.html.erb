@@ -1,7 +1,24 @@
 <h2>Edit <%= @user.username %></h2>
+<%= link_to "Return to Employee Roster", users_path %>
 
 <%= form_for @user do |f| %>
   <%= f.label :username  %><br>
   <%= f.text_field :username %><br>
+  <%= f.label :permission %><br>
+  <select name="user[permission]" id="party_table_num">
+    <option value="0" <%= @user.permission == 0 ? "selected" : "" %> >Chef</option>
+    <option value="1" <%= @user.permission == 1 ? "selected" : "" %> >Server</option>
+    <option value="2" <%= @user.permission == 2 ? "selected" : "" %> >Manager</option>
+  </select><br>
+  <%= f.label "Please validate changes with the user's password" %><br>
+  <%= f.password_field :password %><br>
   <%= f.submit %>
 <% end %>
+
+<div class="error">
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <p class="error"> <%= error %> </p>
+  <% end %>
+<% end %>
+</div>
