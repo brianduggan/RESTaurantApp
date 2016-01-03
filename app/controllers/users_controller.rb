@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.where(:active => 0)
+    @users_inactive = User.where(:active => 1)
   end
 
   def edit
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :permission)
+    params.require(:user).permit(:username, :password, :permission, :active)
   end
 
 

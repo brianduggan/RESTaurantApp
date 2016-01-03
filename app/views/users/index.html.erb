@@ -1,9 +1,18 @@
 <h2>Employee Roster</h2>
 <%= link_to "Admin Page", user_path(current_user) %>
 <div class='party-content'>
-
+  <h4>Active Employees</h4>
   <ul>
     <% @users.each do |user| %>
+    <li>
+      <%= user.username %>, <%=user.permission_level %>, <%= link_to "Edit", edit_user_path(user) %>
+    </li>
+    <% end %>
+  </ul>
+
+  <h4>Inactive Employees</h4>
+  <ul>
+    <% @users_inactive.each do |user| %>
     <li>
       <%= user.username %>, <%=user.permission_level %>, <%= link_to "Edit", edit_user_path(user) %>
     </li>

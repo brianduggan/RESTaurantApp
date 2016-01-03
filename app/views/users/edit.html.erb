@@ -12,6 +12,10 @@
   </select><br>
   <%= f.label "Please validate changes with the user's password" %><br>
   <%= f.password_field :password %><br>
+  <%= f.label "Active" %><br>
+  <%= f.radio_button :active, 0 %><br>
+  <%= f.label "Inactivate" %><br>
+  <%= f.radio_button :active, 1 %><br>
   <%= f.submit %>
 <% end %>
 
