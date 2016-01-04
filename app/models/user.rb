@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :parties
   has_many :orders, through: :parties
   validates :username, uniqueness: true
-  validates :password, length: { in: 6..20 }
+  # validates :password, length: { in: 6..20 }
 
   def permission_level
     if self.permission == 0
@@ -14,5 +14,6 @@ class User < ActiveRecord::Base
       "Manager"
     end
   end
+
 
 end

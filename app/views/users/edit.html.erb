@@ -10,8 +10,6 @@
     <option value="1" <%= @user.permission == 1 ? "selected" : "" %> >Server</option>
     <option value="2" <%= @user.permission == 2 ? "selected" : "" %> >Manager</option>
   </select><br>
-  <%= f.label "Please validate changes with the user's password" %><br>
-  <%= f.password_field :password %><br>
   <%= f.label "Active" %><br>
   <%= f.radio_button :active, 0 %><br>
   <%= f.label "Inactivate" %><br>
